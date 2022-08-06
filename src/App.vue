@@ -1,26 +1,24 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+  <SideBarMenu></SideBarMenu>
+  <BottomBarCommande></BottomBarCommande>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SideBarMenu from './components/side-bar-menu.vue'
+import BottomBarCommande from './components/bottom-bar-commande.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    SideBarMenu,
+    BottomBarCommande
+}
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: 'Signika Negative', sans-serif;
 }
 </style>
