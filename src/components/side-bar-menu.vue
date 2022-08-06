@@ -57,9 +57,15 @@ li{
     padding-top:6px;
     padding-bottom: 6px;
     color: #BCBDBE;
-    font-weight:500;
+    /* font-weight:bold; */
     letter-spacing:0.8px;
     font-size:15px;
+    transition-duration: 0.3s;
+}
+li:hover{
+    color:white;
+    cursor:pointer;
+    transition-duration: 0.3s;
 }
 .icon__sidebar__menu{
     margin-right: 13px;
@@ -84,4 +90,5 @@ li{
 #div__sidebar__logo__playlist{
     width:100%;
 }
+#div__sidebar__logo__playlist:hover{cursor:pointer;}
 </style>

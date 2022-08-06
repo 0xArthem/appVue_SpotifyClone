@@ -7,8 +7,8 @@
 
             <h3 id="div__bottombar__left__titre_musique">Historia de un Amor</h3>
             <p id="div__bottombar__left__auteur_musique">
-                <span>Leo Marini</span>,
-                <span>La Sonora Matancera</span>
+                <span class="auteur_musique">Leo Marini</span>,
+                <span class="auteur_musique">La Sonora Matancera</span>
             </p>
         </div>
         <!------>
@@ -73,16 +73,30 @@ export default {
     font-weight: bold;
     letter-spacing: 0.6px;
 }
+#div__bottombar__left__titre_musique:hover{
+    text-decoration: underline;
+    text-underline-offset: 1px;
+    cursor:pointer;
+}
 #div__bottombar__left__auteur_musique{
     margin-top: -7px;
     color: #BCBDBE;
     font-size: 13px;
+}
+.auteur_musique:hover{
+    text-decoration: underline;
+    text-underline-offset: 1px;
+    color:white;
+    cursor:pointer;
 }
 #div__bottombar__left__heart{
     float:right;
     padding-right:13px;
     margin-top:7px;
     color:#BCBDBE;
+}
+#div__bottombar__left__heart:hover{
+    color:white;
 }
 /********/
 .div__bottombar__middle{
@@ -105,12 +119,27 @@ export default {
     font-size: 15px;
 }
 .fa-random{font-size: 15px;}
+.fa-random:hover{color:white;}
 .fa-step-backward{font-size: 21px;}
+.fa-step-backward:hover{color:white;}
 .fa-step-forward{font-size: 21px;}
+.fa-step-forward:hover{color:white;}
 .fa-play-circle{
     color:white;
     font-size: 33px;
     margin-top:-6px;
+    position:absolute;
+    margin-left:-15px;
+    transition-duration: 0.2s;
+}
+.fa-play-circle:hover{
+    font-size: 34px;
+    transition-duration: 0.2s;
+}
+.fa-redo{transition-duration: 0.3s;}
+.fa-redo:hover{
+    color:#2AE86D;
+    transition-duration: 0.3s;
 }
 /**/
 .div__bottombar__middle__down{
@@ -146,10 +175,16 @@ export default {
     background-color: white;
     margin-top:14px;
 }
+#load_volume:hover{
+    color: #1DB954;
+}
 .div__bottombar__right__icon{
     color: #ADA9A9;
     padding: 8px;
     font-size:17px;
+}
+.div__bottombar__right__icon:hover{
+    color:white;
 }
 .fa-arrows-alt-v{
     transform: rotate(30deg);

@@ -49,66 +49,161 @@
             </div>
 
             <div class="div__middle__search_and_tri">
-                <a><em class="fas fa-search"></em></a>
-                <a>Tri personnalisé <em class="fas fa-caret-down"></em></a>
+                <a class="div__middle__search_and_tri__a"><em class="fas fa-search"></em></a>
+                <a class="div__middle__search_and_tri__a">Tri personnalisé <em class="fas fa-caret-down"></em></a>
             </div>
 
 
             <div class="tableau">
-                <div class="row">
-                    <div class="col col__content__num">
-                        <h1 class="col__titre">#</h1>
-                    </div>
-                    <div class="col col__content__titre">
-                        <h1 class="col__titre">Titre</h1>
-                    </div>
-                    <div class="col col__content__album">
-                        <h1 class="col__titre">Album</h1>
-                    </div>
-                    <div class="col col__content__add">
-                        <h1 class="col__titre">Ajouté le</h1>
-                    </div>
-                    <div class="col col__content__clock">
-                        <h1 class="col__titre"><em class="far fa-clock"></em></h1>
-                    </div>
+            
+                <div class="table-responsive"> 
+                    <table class="table">
+                        <thead class="thead">
+                            <tr>
+                                <th scope="col" class="col__titre">#</th>
+                                <th scope="col" class="col__titre">Titre</th>
+                                <th scope="col" class="col__titre">Album</th>
+                                <th scope="col" class="col__titre">Ajouté le</th>
+                                <th scope="col" class="col__titre">
+                                    <em class="far fa-clock"></em>
+                                </th>
+                            </tr>
+
+                            
+                        </thead>
+
+                        <!-------------->
+
+                        <tbody>
+                            <tr v-for="playlistMusic in playlistMusics" :key="playlistMusic.id">
+                                <th scope="row">{{ playlistMusic.id }}</th>
+
+                                <td class="text-light">
+                                    <img v-bind:src="playlistMusic.url" alt="" style="width:50px;">
+                                    <div style="margin-top:-50px;margin-left:60px;">
+                                        <a style="font-weight:bold;letter-spacing:0.5px;">{{ playlistMusic.title }}</a><br>
+                                        <a style="color:#ADA9A9;">{{ playlistMusic.author }}</a>
+                                    </div>
+                                    </td>
+                                <td>{{ playlistMusic.album }}</td>
+                                <td>{{ playlistMusic.add }}</td>
+                                <td>{{ playlistMusic.time }}</td>
+                            </tr>
+                            <!----->
+                        </tbody>
+                    </table>
                 </div>
 
-                <div id="hr"></div>
-
-                <div class="row row__liste">
-                    <div class="col col__content__num">
-                        <h1 class="col__titre__list">1</h1>
-                    </div>
-                    <div class="col col__content__titre">
-                        <h1 class="col__titre__list col__titre_auteur">
-                            <img src="../assets/profil.jpg" width="40px" alt="">
-                            <div id="img_space_titre">
-                                <a id="titre">Lorem ipsum</a>
-                                <br>
-                                <a>Lorem ipsam</a>
-                            </div>
-                        </h1>
-                    </div>
-                    <div class="col col__content__album">
-                        <h1 class="col__titre__list">Lorem ipsum</h1>
-                    </div>
-                    <div class="col col__content__add">
-                        <h1 class="col__titre__list">25 août 2020</h1>
-                    </div>
-                    <div class="col col__content__clock">
-                        <h1 class="col__titre__list">3:05</h1>
-                    </div>
-                </div>
-                
             </div>
         </div>
-           
     </div>
 </template>
 
 <script>
 export default {
-    name: 'MiddleContent'
+    name: 'MiddleContent',
+    data() {
+        return {
+            playlistMusics: [
+                {
+                    id:1,
+                    title: "Vecina Présteme el Cubo",
+                    author: "Pupy y Los Que Son Son",
+                    album: "Tranquilo Que Yo Controlo (Remasterizado)",
+                    add: "25 août 2020",
+                    time: "3:05",
+                    url: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                },
+                {
+                    id:2,
+                    title: "En la Selva",
+                    author: "Maykel Blanco y Su Salsa Mayor, Pancho Amat",
+                    album: "Que Tiene Que Te Mueve",
+                    add: "25 août 2020",
+                    time: "6:00",
+                    url: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    
+                },
+                {
+                    id:3,
+                    title: "Me Dicen Cuba",
+                    author: "Alexander Abreu, Havana D'Primera",
+                    album: "La Vuelta al Mundo",
+                    add: "25 août 2020",
+                    time: "5:42",
+                    url: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                },
+                {
+                    id:4,
+                    title: "Pa' Bravo Yo",
+                    author: "Justo Betancourt",
+                    album: "Pa' Bravo Yo",
+                    add: "25 août 2020",
+                    time: "3:45",
+                    url: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                },
+                {
+                    id:5,
+                    title: "Soy Cubana",
+                    author: "Son Damas",
+                    album: "Bailables de Cuba, Vol.2",
+                    add: "25 août 2020",
+                    time: "5:09",
+                    url: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                },
+                {
+                    id:6,
+                    title: "Historia de un Amor",
+                    author: "Leo Marini, La Sonora Matancera",
+                    album: "Latin Trumpets - Bolero",
+                    add: "25 août 2020",
+                    time: "2:49",
+                    url: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                
+                },
+                {
+                    id:7,
+                    title: "Hoah!",
+                    author: "Calle Real",
+                    album: "Dime Qué?!",
+                    add: "25 août 2020",
+                    time: "7:24",
+                    url: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+
+                },
+                {
+                    id:8,
+                    title: "Consumelo",
+                    author: "TIMBALIVE",
+                    album: "Consumelo",
+                    add: "25 août 2020",
+                    time: "4:42",
+                    url: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+
+                },
+                {
+                    id:9,
+                    title: "Yo Siempre LLamo La Fiesta",
+                    author: "Marquetti, Habana Swing",
+                    album: "Salsa 2018",
+                    add: "25 août 2020",
+                    time: "3:58",
+                    url: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+
+                },
+                {
+                    id:10,
+                    title: "Castigo",
+                    author: "Leslie Guzman, Los Yakuza",
+                    album: "Castigo",
+                    add: "25 août 2020",
+                    time: "3:36",
+                    url: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    
+                }
+            ]
+        }
+    }
 }
 </script>
 
@@ -117,6 +212,8 @@ export default {
     float:right;
     width:1296px;
     height: 640px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 .div__middle__up{
     width:1296px;
@@ -132,6 +229,9 @@ export default {
 .left-right{
     padding:10px;
     border-radius: 100%;
+}
+.left-right:hover{
+    cursor:pointer;
 }
 .fa-chevron-left{
     color:white;
@@ -164,6 +264,9 @@ export default {
     padding-left:5px;
     padding-right:10px;
     padding-top:2.5px;
+}
+.header__profil:hover{
+    cursor: pointer;
 }
 .header__profil__a{
     color: #fbfbfb !important;
@@ -224,7 +327,7 @@ export default {
     padding-left:30px;
     padding-top:15px;
     width:1296px;
-    height: 410px;
+    /* height:100%; */
     background:linear-gradient(to bottom, #8E3C16 5%, #191414 95%)
 }
 .div__middle__down__icon{
@@ -266,57 +369,52 @@ export default {
     height:500px;
     margin-right:3.5%;
 }
+.div__middle__search_and_tri__a{color: #ADA9A9;transition-duration: 0.3s;}
+.div__middle__search_and_tri__a:hover{
+    color: white;
+    transition-duration: 0.3s;
+    cursor:pointer;
+}
 /***/
 .tableau{
     margin-top:80px;
 }
 .col__titre{
-    font-size:14px;
+    font-size:15px;
     color:#BCBDBE;
     text-transform: uppercase;
 }
-.col__content__num{
-    margin-right: -200px;
-}
-.col__content__titre{
-    padding-right: 220px;
-}
-.col__content__album{
-    padding-right: 120px;
-}
-.col__content__add{
-    padding-right: 120px;
-}
-.col__content__clock{
-    margin-right: -375px;
-}
-#hr{
-    height:1px;
-    width:80%;
-    position:absolute;
-    background-color:#BCBDBE;
-    margin-top:5px;
-}
 /***/
-.row__liste{
-    margin-top:30px;
-}
-.col__titre__list{
-    font-size:16px;
-    color:#BCBDBE;
-}
-.col__titre_auteur{
-    display:flex;
-    justify-content:center;
-    margin-top:-10px;
-    margin-left:-67px;
-}
 #img_space_titre{
     margin-left:10px;
 }
 #titre{
-    font-size:19px;
+    font-size:17px;
     color:white;
     letter-spacing:0.5px;
+}
+/*****************************/
+th{
+    color:#ADA9A9;
+    font-size:16px;
+    border:none !important;
+}
+td{
+    color:#ADA9A9;
+    font-size:16px;
+    border:none !important;
+}
+thead{
+    border-bottom:solid 0.2px #ADA9A9;
+}
+/***/
+.fa-ellipsis-h:hover{color:white;}
+.fa-arrow-down:hover{color:white;}
+.fa-heart:hover{color:#2AE86D;}
+.fa-play:hover{
+    padding-top:17px;
+    padding-bottom:17px;
+    padding-right:17px;
+    padding-left:22px;
 }
 </style>
