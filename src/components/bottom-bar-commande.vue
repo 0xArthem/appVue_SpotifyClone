@@ -51,7 +51,7 @@ export default {
 
 <style scoped>
 .div__bottombar{
-    border-top:solid 0.1px #BCBDBE;
+    /* border-top:solid 0.1px #BCBDBE; */
     position: absolute;
     margin-top: 10px;
     width:100%;
