@@ -1,14 +1,14 @@
 <template>
-    <div class="div__middle">
+    <div class="div__middle" v-if="div__middle_playlist">
 
         <div class="div__middle__up">
             <div class="header">
                 <div>
-                    <a class="left-right"><em class="fas fa-chevron-left"></em></a>
+                    <a class="left-right" @click="goToAccueil()"><em class="fas fa-chevron-left"></em></a>
                     <a class="left-right"><em class="fas fa-chevron-right"></em></a>
                 </div>
 
-                <div class="header__profil">
+                <div class="header__profil" data-mdb-toggle="modal" data-mdb-target="#header__profil">
                     <a class="header__profil__a">
                         <img id="header__img" src="../assets/profil.jpg" width="24px" alt="Image de profil">
                     </a>
@@ -16,6 +16,21 @@
                     <a class="header__profil__a">Untel</a>
 
                     <a class="header__profil__a"><em class="fas fa-caret-down"></em></a>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="header__profil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-body">
+                        <ul>
+                            <li>Compte</li>
+                            <li>Profil</li>
+                            <li>Session d'écoute privée</li>
+                            <li>Préférences</li>
+                            <hr>
+                            <li>Deconnexion</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
@@ -79,9 +94,15 @@
                                 <th scope="row">{{ playlistMusic.id }}</th>
 
                                 <td class="text-light">
-                                    <img v-bind:src="playlistMusic.url" alt="" style="width:50px;">
+                                    <img
+                                    v-bind:src="playlistMusic.url" alt="" style="width:50px;"
+                                    >
+
                                     <div style="margin-top:-50px;margin-left:60px;">
-                                        <a style="font-weight:bold;letter-spacing:0.5px;">{{ playlistMusic.title }}</a><br>
+                                        <a
+                                        class="playSong__a"
+                                        >{{ playlistMusic.title }}</a>
+                                        <br>
                                         <a style="color:#ADA9A9;">{{ playlistMusic.author }}</a>
                                     </div>
                                     </td>
@@ -97,6 +118,122 @@
             </div>
         </div>
     </div>
+    <!--------------------------------------------->
+    <div class="div__middle__accueil" v-if="div__middle_accueil">
+    
+        <div class="header__accueil">
+            <div>
+                <a class="left-right"><em class="fas fa-chevron-left"></em></a>
+                <a class="left-right" @click="playlist()"><em class="fas fa-chevron-right"></em></a>
+            </div>
+        </div>
+
+        <div class="header__banniere">
+            <!---->
+            <div style="float:left;">
+                <img src="../assets/afro_hits.jpg" alt=""
+                style="width:210px;margin-top:20px;margin-left:18px;">
+            </div>
+
+            <div style="margin-left:250px;padding-top:20px;color:white;">
+                <a id="playlist_publique">Playlist</a>
+                <h3 id="salsa_cubana">Afro Hits</h3>
+                <a>Afropop feel good d'Europe et d'Afrique</a>
+                <br>
+                <button class="btn btn-rounded mt-3 btn__lecture">Lecture</button>
+                <button class="btn btn-rounded btn__abonner">S'abonner</button>
+            </div>
+        </div>
+
+        <h2 id="hello">Bonjour</h2>
+
+        <div class="row row-cols-1 row-cols-md-3 g-3 row__accueil">
+            
+            <div class="col-sm-6">
+                <img src="https://images.unsplash.com/photo-1588167056547-c183313da47c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=531&q=80"
+                alt="" class="img__accueil__musique">
+                <div class="card row__accueil__card">
+                    <div class="card-body row__accueil__body">
+                        
+                        <h5 class="card-title row__accueil__title">Musique en cours #1</h5>
+                        <div class="progress">
+                            <div
+                                class="progress-bar progress-bar-striped progress-bar-animated"
+                                role="progressbar"
+                                aria-valuenow="75"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                                style="width: 75%;"
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <img src="https://images.unsplash.com/photo-1531501410720-c8d437636169?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+                alt="" class="img__accueil__musique">
+
+                <div class="card row__accueil__card">
+                    <div class="card-body row__accueil__body">
+                        <h5 class="card-title row__accueil__title">Musique en cours #2</h5>
+                        <div class="progress">
+                            <div
+                                class="progress-bar progress-bar-striped progress-bar-animated"
+                                role="progressbar"
+                                aria-valuenow="75"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                                style="width: 95%;"
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <img src="https://images.unsplash.com/photo-1487537023671-8dce1a785863?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                alt="" class="img__accueil__musique">
+                <div class="card row__accueil__card">
+                    <div class="card-body row__accueil__body">
+                        <h5 class="card-title row__accueil__title">Musique en cours #3</h5>
+                        <div class="progress">
+                            <div
+                                class="progress-bar progress-bar-striped progress-bar-animated"
+                                role="progressbar"
+                                aria-valuenow="75"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                                style="width: 45%;"
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6">
+                <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80"
+                alt="" class="img__accueil__musique">
+                <div class="card row__accueil__card">
+                    <div class="card-body row__accueil__body">
+                        <h5 class="card-title row__accueil__title">Musique en cours #4</h5>
+                        <div class="progress">
+                            <div
+                                class="progress-bar progress-bar-striped progress-bar-animated"
+                                role="progressbar"
+                                aria-valuenow="75"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                                style="width: 15%;"
+                            ></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
 </template>
 
 <script>
@@ -104,6 +241,8 @@ export default {
     name: 'MiddleContent',
     data() {
         return {
+            div__middle_playlist: true,
+            div__middle_accueil: false,
             playlistMusics: [
                 {
                     id:1,
@@ -112,6 +251,7 @@ export default {
                     album: "Tranquilo Que Yo Controlo (Remasterizado)",
                     add: "25 août 2020",
                     time: "3:05",
+                    sound: "https://universal-soundbank.com/sounds/13748.mp3",
                     url: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
                 },
                 {
@@ -121,6 +261,7 @@ export default {
                     album: "Que Tiene Que Te Mueve",
                     add: "25 août 2020",
                     time: "6:00",
+                    sound: "https://universal-soundbank.com/sounds/13747.mp3",
                     url: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
                     
                 },
@@ -131,6 +272,7 @@ export default {
                     album: "La Vuelta al Mundo",
                     add: "25 août 2020",
                     time: "5:42",
+                    sound: "https://universal-soundbank.com/sounds/13749.mp3",
                     url: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
                 },
                 {
@@ -140,6 +282,7 @@ export default {
                     album: "Pa' Bravo Yo",
                     add: "25 août 2020",
                     time: "3:45",
+                    sound: "https://universal-soundbank.com/sounds/13746.mp3",
                     url: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
                 },
                 {
@@ -149,6 +292,7 @@ export default {
                     album: "Bailables de Cuba, Vol.2",
                     add: "25 août 2020",
                     time: "5:09",
+                    sound: "https://universal-soundbank.com/sounds/13639.mp3",
                     url: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
                 },
                 {
@@ -158,6 +302,7 @@ export default {
                     album: "Latin Trumpets - Bolero",
                     add: "25 août 2020",
                     time: "2:49",
+                    sound: "https://universal-soundbank.com/sounds/13821.mp3",
                     url: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
                 
                 },
@@ -168,6 +313,7 @@ export default {
                     album: "Dime Qué?!",
                     add: "25 août 2020",
                     time: "7:24",
+                    sound: "https://universal-soundbank.com/sounds/20555.mp3",
                     url: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
 
                 },
@@ -178,6 +324,7 @@ export default {
                     album: "Consumelo",
                     add: "25 août 2020",
                     time: "4:42",
+                    sound: "https://universal-soundbank.com/sounds/20815.mp3",
                     url: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
 
                 },
@@ -188,6 +335,7 @@ export default {
                     album: "Salsa 2018",
                     add: "25 août 2020",
                     time: "3:58",
+                    sound: "https://universal-soundbank.com/sounds/13826.mp3",
                     url: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
 
                 },
@@ -198,10 +346,21 @@ export default {
                     album: "Castigo",
                     add: "25 août 2020",
                     time: "3:36",
+                    sound: "https://universal-soundbank.com/sounds/13819.mp3",
                     url: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                    
+
                 }
             ]
+        }
+    },
+    methods: {
+        goToAccueil() {
+            this.div__middle_playlist = false
+            this.div__middle_accueil = true
+        },
+        playlist() {
+            this.div__middle_playlist = true
+            this.div__middle_accueil = false
         }
     }
 }
@@ -416,5 +575,127 @@ thead{
     padding-bottom:17px;
     padding-right:17px;
     padding-left:22px;
+}
+/*****/
+.modal-dialog{
+    background-color:#191414;
+    margin-right:35px;
+    margin-top:50px;
+    width:200px;
+}
+ul{
+    list-style-type: none;
+    margin-left:-30px;
+}
+li{
+    color:white;
+    margin-top:10px;
+    font-size:15px;
+}
+/*** */
+.playSong__a{
+    cursor:pointer;
+    color:white;
+}
+/********************************************************************* */
+.div__middle__accueil{
+    background-color:#191414;
+    float:right;
+    float:right;
+    width:1296px;
+    height: 640px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.header__accueil{
+    padding-top:8px;
+    padding-left:20px;
+}
+.header__banniere{
+    height:250px;
+    background-color:black;
+    margin-left:3%;
+    margin-right:3%;
+    margin-top:1%;
+    border-radius:8px;
+}
+#hello{
+    margin-left:3%;
+    margin-top:2%;
+    margin-bottom:2%;
+    color:#fbfbfb;
+    font-weight: bold;
+    letter-spacing:0.5px;
+}
+.row__accueil{
+    margin-left:2.5%;
+    margin-right:3%;
+}
+.row__accueil__card{
+    border-radius:5px !important;
+    margin-right:2%;
+    margin-bottom:1%;
+}
+.row__accueil__body{
+    background-color:#262626;
+    color:#fbfbfb;
+    text-transform: uppercase;
+    letter-spacing:0.7px;
+    transition-duration:0.8s;
+}
+.row__accueil__body:hover{
+    background-color:#666262;
+    cursor:pointer;
+    transition-duration:0.8s;
+}
+.row__accueil__title{
+    margin-left:-10px;
+    font-size:15px;
+    font-weight:bold !important;
+}
+.progress{
+    margin-left:-10px;
+    margin-right:70%;
+    background-color:#ADA9A9;
+    border-radius:10px;
+    height:6px;
+}
+.progress-bar{
+    border:solid 4px #fbfbfb;
+    margin-left:-5px;
+    border-radius:10px;
+}
+.img__accueil__musique{
+    width:88px;
+    height:80px;
+    float:left;
+}
+.btn__abonner{
+    letter-spacing:0.9px;
+    margin-left:140px;
+    margin-top:15px;
+    color:white;
+    background-color:black;
+    font-weight:bold;
+    font-size:16px;
+    text-transform: none;
+    border:solid 1px white;
+    position:absolute;
+}
+.btn__abonner:hover{
+    font-size:17px;
+}
+.btn__lecture{
+    position:absolute;
+    letter-spacing:0.9px;
+    color:black;
+    background-color:#1DB954;
+    font-weight:bold;
+    font-size:16px;
+    text-transform: none;
+    border:solid 1px #1DB954;
+}
+.btn__lecture:hover{
+    font-size:17px;
 }
 </style>

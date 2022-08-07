@@ -4,7 +4,7 @@
             <a id="icon__sidebar__ellipsis"><em class="fas fa-ellipsis-h"></em></a>
 
             <ul>
-                <li><em class="fas fa-home icon__sidebar__menu"></em> Accueil</li>
+                <li @click="goToAccueil()"><em class="fas fa-home icon__sidebar__menu"></em> Accueil</li>
                 <li><em class="fas fa-search icon__sidebar__menu"></em> Rechercher</li>
                 <li><em class="fas fa-signal icon__sidebar__menu"></em> Bibliothèque</li>
 
@@ -33,7 +33,12 @@
 
 <script>
 export default {
-    name: 'SideBarMenu'
+    name: 'SideBarMenu',
+    data() {
+        return {
+
+        }
+    },
 }
 </script>
 
